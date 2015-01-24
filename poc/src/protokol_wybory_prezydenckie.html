@@ -1,0 +1,240 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>Wybory prezydenta Rzeczypospolitej Polskiej</title>
+	<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<form>
+	<h1>Wybory prezydenta Rzeczypospolitej Polskiej</h1>
+
+	<fieldset>
+
+	<p>
+		<label for"kodGminy">Kod terytorialny gminy</label>
+		<input type="text" id="kodGminy"></input>
+
+		<label for="nrObwodu">Nr obwodu głosowania</label>
+		<input type="text" id="nrObwodu"></input>
+	</p>
+
+	<label for="adresOKW">Siedziba Okręgowej Komisji Wyborczej</label>
+	<input type="text" id="adresOKW"></input>
+
+	<p>
+		<label for="gmina">Gmina</label>
+		<input type="text" id="gmina"></input>
+
+		<label for="powiat">Powiat</label>
+		<input type="text" id="powiat"></input>
+
+		<label for="wojewodztwo">Województwo</label>
+		<input type="text" id="wojewodztwo"></input>
+	</p>
+
+	<p>
+		<label for="nrKomisji">Okręgowa Komisja Wyborcza nr </label>
+		<input type="text" id="nrKomisji"></input>
+
+		<label for="miejsceOKW">w</label>
+		<input type="text" id="miejsceOKW"></input>
+	</p>
+
+	</fieldset>
+
+	</br>
+
+	<fieldset>
+
+	<p>Protokół głosowania na kandydatów na Prezydenta Rzeczypospolitej Polskiej</p>
+	<p>Głosowanie rozpoczęło się w dniu
+	<input type="text" id="dzienGlosowania"></input>
+	o godzinie
+	<input type="text" id="godzinaGlosowaniaOd"></input>
+	i trwało bez przerwy do godziny
+	<input type="text" id="godzinaGlosowaniaDo"></input>.</p>
+
+	</fieldset>
+
+	<fieldset>
+		<legend>I. Rozliczenie kart do głosowania</legend>
+		<table>
+			<tr>
+				<td>1.</td>
+				<td>Liczba wyborców uprawnionych do głosowania</td>
+				<td><input type="text" id="liczbaUprawnionychWyborcow"></input></tr>
+			</tr>
+			<tr>
+				<td>2.</td>
+				<td>Komisja otrzymała kart do głosowania</td>
+				<td><input type="text" id="liczbaOtrzymanychKart"></input></tr>
+			</tr>
+			<tr>
+				<td>3.</td>
+				<td>Liczba wyborców, którym wydano karty do głosowania</td>
+				<td><input type="text" id="liczbaWydanychKart"></input></tr>
+			</tr>
+			<tr>
+				<td>3a.</td>
+				<td>Liczba wyborców głosujących przez pełnomocnika</td>
+				<td><input type="text" id="liczbaGlosujacychPrzezPelnomocnika"></input></tr>
+			</tr>
+			<tr>
+				<td>4.</td>
+				<td>Nie wykorzystano kart do głosowania</td>
+				<td><input type="text" id="liczbaNiewykorzystanychKart"></input></tr>
+			</tr>
+		</table>
+		<p><b>Uwaga!</b> Suma liczb z pkt. 3 i 4 powinna być równa liczbie z pkt. 2. Jeśli tak nie jest, przypuszczalną przyczynę należy omówić w pkt. 9.</p>
+
+	</fieldset>
+
+	<fieldset>
+		<legend>II. Ustalenie wyników głosowania</legend>
+		<p>Komisja stwierdziła, że pieczęcie na urnie pozostały nienaruszone. Po wyjęciu kart z urny Komisja ustaliła na ich podstawie następujące wyniki głosowania:</p>
+
+		<table>
+			<tr>
+				<td>5.</td>
+				<td>Liczba oddanych głosów, czyli kart wrzuconych do urny przez wyborców</td>
+				<td><input type="text" id="liczbaOddanychGlosow"></input></tr>
+			</tr>
+		</table>
+
+		<p><b>Uwaga!</b> Liczba z pkt. 5 powinna być równa liczbie z pkt. 3. Jeśli tak nie jest, przypuszczalną przyczynę należy omówić w pkt. 10.</p>
+
+		<table>
+			<tr>
+				<td>6.</td>
+				<td>Liczba głosów ważnych</td>
+				<td><input type="text" id="liczbaWaznychGlosow"></input></tr>
+			</tr>
+			<tr>
+				<td>7.</td>
+				<td>Liczba głosów nieważnych</td>
+				<td><input type="text" id="liczbaNiewanychGlosow"></input></tr>
+			</tr>
+		</table>		
+		<p><b>Uwaga!</b> Liczba z pkt. 5 <b>musi</b> być równa sumie liczb z pkt. 6 i 7.</p>
+
+		<p>8. Poszczególni kandydaci otrzymali następującą liczbę głosów ważnych:</p>
+		<table>
+			<tr>
+				<td>1.</td>
+				<td><input type="text" id="kandydat_01_imiona_i_nazwisko"></input></td>
+				<td><input type="text" id="kandydat_01_liczba_glosow_waznych"></input></tr>
+			</tr>
+			<tr>
+				<td>2.</td>
+				<td><input type="text" id="kandydat_02_imiona_i_nazwisko"></input></td>
+				<td><input type="text" id="kandydat_02_liczba_glosow_waznych"></input></tr>
+			</tr>
+			<tr>
+				<td>3.</td>
+				<td><input type="text" id="kandydat_03_imiona_i_nazwisko"></input></td>
+				<td><input type="text" id="kandydat_03_liczba_glosow_waznych"></input></tr>
+			</tr>
+			<tr>
+				<td>4.</td>
+				<td><input type="text" id="kandydat_04_imiona_i_nazwisko"></input></td>
+				<td><input type="text" id="kandydat_04_liczba_glosow_waznych"></input></tr>
+			</tr>
+			<tr>
+				<td>5.</td>
+				<td><input type="text" id="kandydat_05_imiona_i_nazwisko"></input></td>
+				<td><input type="text" id="kandydat_05_liczba_glosow_waznych"></input></tr>
+			</tr>
+			<tr>
+				<td>&nbsp;</td>
+				<td>Razem:</td>
+				<td><input type="text" id="suma_glosow_waznych"></input></tr>
+			</tr>
+		</table>	
+
+		<p><b>Uwaga!</b> Suma głosów oddanych na wszystkich kandydatów (rubryka ,,Razem'') <b>musi</b> być równa liczbie z pkt. 6, czyli liczbie głosów ważnych.</p>
+	</fieldset>
+
+	<fieldset>
+		<legend>III. Uwagi i adnotacje</legend>
+
+		<table>
+			<tr>
+				<td>9.</td>
+				<td>Uwagi o przypuszczalnej przyczynie ewentualnej różnicy pomiędzy sumą liczb z pkt. 3 i 4, a liczbą z pkt. 2. Jeżeli różnica nie występuje, wpisać &#8222;brak uwag&#8221;</td>
+			</tr>
+			<tr>
+				<td>&nbsp;</td>
+				<td><textarea id="uwagi_9" rows="5" cols="80"></textarea>
+			</tr>
+
+			<tr>
+				<td>10.</td>
+				<td>Uwagi o przypuszczalnej przyczynie ewentualnej różnicy pomiędzy liczbą z pkt. 5, a liczbą z pkt. 3. Jeżeli różnica nie występuje, wpisać &#8222;brak uwag&#8221;</td>
+			</tr>
+			<tr>
+				<td>&nbsp;</td>
+				<td><textarea id="uwagi_10" rows="5" cols="80"></textarea>
+			</tr>
+
+			<tr>
+				<td>11.</td>
+				<td>W trakcie głosowana wydano następujące zarządzenia i decyzje. Jeżeli nie wydano, wpisać &#8222;brak zarządzeń&#8221;.</td>
+			</tr>
+			<tr>
+				<td>&nbsp;</td>
+				<td><textarea id="uwagi_11" rows="5" cols="80"></textarea>
+			</tr>
+			<tr>
+				<td>12.</td>
+				<td>Adnotacje o wniesieniu przez mężów zaufania uwag z wymienieniem konkretnych zarzutów. Jeżeli nie ma, wpisać &#8222;zarzutów nie zgłoszono&#8221;.</td>
+			</tr>
+			<tr>
+				<td>&nbsp;</td>
+				<td><textarea id="uwagi_12" rows="5" cols="80"></textarea>
+			</tr>
+			<tr>
+				<td>13.</td>
+				<td>Adnotacje o wniesieniu przez członków Komisji uwag z wymienieniem konkretnych zarzutów. Jeżeli nie ma, wpisać &#8222;zarzutów nie zgłoszono&#8221;.</td>
+			</tr>
+			<tr>
+				<td>&nbsp;</td>
+				<td><textarea id="uwagi_13" rows="5" cols="80"></textarea>
+			</tr>
+			<tr>
+				<td>14.</td>
+				<td>Inne uwagi. Jeżeli nie ma, wpisać &#8222;brak uwag&#8221;.</td>
+			</tr>
+			<tr>
+				<td>&nbsp;</td>
+				<td><textarea id="uwagi_14" rows="5" cols="80"></textarea>
+			</tr>
+		</table>
+
+		<p>Przy sporządzaniu protokołu obecni byli członkowie Komisji:</p>
+
+		<table>
+			<tr>
+				<td>1.</td>
+				<td><input type="input" label="czlonek_01" style="width: 350px"></input></td>
+			</tr>
+			<tr>
+				<td>2.</td>
+				<td><input type="input" label="czlonek_02" style="width: 350px"></input></td>
+			</tr>
+			<tr>
+				<td>3.</td>
+				<td><input type="input" label="czlonek_03" style="width: 350px"></input></td>
+			</tr>
+			<tr>
+				<td>4.</td>
+				<td><input type="input" label="czlonek_04" style="width: 350px"></input></td>
+			</tr>
+			<tr>
+				<td>5.</td>
+				<td><input type="input" label="czlonek_05" style="width: 350px"></input></td>
+			</tr>
+	</fieldset>
+</form>
+</body>
+</html>

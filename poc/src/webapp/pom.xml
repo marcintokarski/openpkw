@@ -1,0 +1,28 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.openpkw.poc</groupId>
+  <artifactId>webapp</artifactId>
+  <packaging>war</packaging>
+  <version>1.0.0</version>
+
+  <name>OpenPKW POC WebApp</name>
+  <url>http://openpkw.org</url>
+
+  <build>
+    <finalName>openpkw</finalName>
+    <plugins>
+      <plugin>
+        <groupId>org.jboss.as.plugins</groupId>
+        <artifactId>jboss-as-maven-plugin</artifactId>
+        <version>7.3.Final</version>
+        <configuration>
+          <hostname>54.173.158.97</hostname>
+          <port>9999</port>
+          <username>go</username>
+          <password>ke734efjwEK</password>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>

@@ -9,6 +9,8 @@
 <form>
 	<h1>Wybory prezydenta Rzeczypospolitej Polskiej</h1>
 
+	<button type="button" onClick="validate()">Sprawdź</button>
+
 	<fieldset>
 
 	<p>
@@ -61,27 +63,27 @@
 			<tr>
 				<td>1.</td>
 				<td>Liczba wyborców uprawnionych do głosowania</td>
-				<td><input type="text" id="liczbaUprawnionychWyborcow"></input></tr>
+				<td><input type="text" id="liczba_1_1"></input></tr>
 			</tr>
 			<tr>
 				<td>2.</td>
 				<td>Komisja otrzymała kart do głosowania</td>
-				<td><input type="text" id="liczbaOtrzymanychKart"></input></tr>
+				<td><input type="text" id="liczba_1_2"></input></tr>
 			</tr>
 			<tr>
 				<td>3.</td>
 				<td>Liczba wyborców, którym wydano karty do głosowania</td>
-				<td><input type="text" id="liczbaWydanychKart"></input></tr>
+				<td><input type="text" id="liczba_1_3"></input></tr>
 			</tr>
 			<tr>
 				<td>3a.</td>
 				<td>Liczba wyborców głosujących przez pełnomocnika</td>
-				<td><input type="text" id="liczbaGlosujacychPrzezPelnomocnika"></input></tr>
+				<td><input type="text" id="liczba_1_3a"></input></tr>
 			</tr>
 			<tr>
 				<td>4.</td>
 				<td>Nie wykorzystano kart do głosowania</td>
-				<td><input type="text" id="liczbaNiewykorzystanychKart"></input></tr>
+				<td><input type="text" id="liczba_1_4"></input></tr>
 			</tr>
 		</table>
 		<p class="uwaga"><b>Uwaga!</b> Suma liczb z pkt. 3 i 4 powinna być równa liczbie z pkt. 2. Jeśli tak nie jest, przypuszczalną przyczynę należy omówić w pkt. 9.</p>
@@ -234,6 +236,8 @@
 			</tr>
 	</fieldset>
 </form>
+
+<script src="reguly_walidacji.js"></script> 
 
 <script>
 

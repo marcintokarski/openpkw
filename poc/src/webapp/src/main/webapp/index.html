@@ -4,11 +4,10 @@
 	<title>Wybory prezydenta Rzeczypospolitej Polskiej</title>
 	<link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body onload="initialize()">
 
 <form>
 	<h1>Wybory prezydenta Rzeczypospolitej Polskiej</h1>
-	<h2>(Deployed to JBoss Application Server by Go Continuous Delivery)</h2>
 
 	<fieldset>
 
@@ -21,40 +20,38 @@
 	</p>
 
 	<label for="adresOKW">Siedziba Okręgowej Komisji Wyborczej</label>
-	<input type="text" id="adresOKW"></input>
+	<input type="text" id="adresOKW" style="width: 493px"></input>
 
 	<p>
 		<label for="gmina">Gmina</label>
-		<input type="text" id="gmina"></input>
+		<input type="text" id="gmina" style="width: 180px"></input>
 
 		<label for="powiat">Powiat</label>
-		<input type="text" id="powiat"></input>
+		<input type="text" id="powiat" style="width: 180px"></input>
 
 		<label for="wojewodztwo">Województwo</label>
-		<input type="text" id="wojewodztwo"></input>
+		<input type="text" id="wojewodztwo" style="width: 180px"></input>
 	</p>
 
 	<p>
 		<label for="nrKomisji">Okręgowa Komisja Wyborcza nr </label>
-		<input type="text" id="nrKomisji"></input>
+		<input type="text" id="nrKomisji" style="width: 50px"></input>
 
 		<label for="miejsceOKW">w</label>
-		<input type="text" id="miejsceOKW"></input>
+		<input type="text" id="miejsceOKW" style="width: 460px"></input>
 	</p>
 
 	</fieldset>
 
-	</br>
-
 	<fieldset>
 
-	<p>Protokół głosowania na kandydatów na Prezydenta Rzeczypospolitej Polskiej</p>
+	<h3>Protokół głosowania na kandydatów na Prezydenta Rzeczypospolitej Polskiej</h3>
 	<p>Głosowanie rozpoczęło się w dniu
 	<input type="text" id="dzienGlosowania"></input>
 	o godzinie
-	<input type="text" id="godzinaGlosowaniaOd"></input>
+	<input type="text" id="godzinaGlosowaniaOd" style="width: 50px"></input>
 	i trwało bez przerwy do godziny
-	<input type="text" id="godzinaGlosowaniaDo"></input>.</p>
+	<input type="text" id="godzinaGlosowaniaDo" style="width: 50px"></input>.</p>
 
 	</fieldset>
 
@@ -87,7 +84,7 @@
 				<td><input type="text" id="liczbaNiewykorzystanychKart"></input></tr>
 			</tr>
 		</table>
-		<p><b>Uwaga!</b> Suma liczb z pkt. 3 i 4 powinna być równa liczbie z pkt. 2. Jeśli tak nie jest, przypuszczalną przyczynę należy omówić w pkt. 9.</p>
+		<p class="uwaga"><b>Uwaga!</b> Suma liczb z pkt. 3 i 4 powinna być równa liczbie z pkt. 2. Jeśli tak nie jest, przypuszczalną przyczynę należy omówić w pkt. 9.</p>
 
 	</fieldset>
 
@@ -103,7 +100,7 @@
 			</tr>
 		</table>
 
-		<p><b>Uwaga!</b> Liczba z pkt. 5 powinna być równa liczbie z pkt. 3. Jeśli tak nie jest, przypuszczalną przyczynę należy omówić w pkt. 10.</p>
+		<p class="uwaga"><b>Uwaga!</b> Liczba z pkt. 5 powinna być równa liczbie z pkt. 3. Jeśli tak nie jest, przypuszczalną przyczynę należy omówić w pkt. 10.</p>
 
 		<table>
 			<tr>
@@ -117,43 +114,43 @@
 				<td><input type="text" id="liczbaNiewanychGlosow"></input></tr>
 			</tr>
 		</table>		
-		<p><b>Uwaga!</b> Liczba z pkt. 5 <b>musi</b> być równa sumie liczb z pkt. 6 i 7.</p>
+		<p class="uwaga"><b>Uwaga!</b> Liczba z pkt. 5 <b>musi</b> być równa sumie liczb z pkt. 6 i 7.</p>
 
 		<p>8. Poszczególni kandydaci otrzymali następującą liczbę głosów ważnych:</p>
 		<table>
 			<tr>
 				<td>1.</td>
-				<td><input type="text" id="kandydat_01_imiona_i_nazwisko"></input></td>
+				<td><input type="text" id="kandydat_01_imiona_i_nazwisko" style="width: 300px"></input></td>
 				<td><input type="text" id="kandydat_01_liczba_glosow_waznych"></input></tr>
 			</tr>
 			<tr>
 				<td>2.</td>
-				<td><input type="text" id="kandydat_02_imiona_i_nazwisko"></input></td>
+				<td><input type="text" id="kandydat_02_imiona_i_nazwisko" style="width: 300px"></input></td>
 				<td><input type="text" id="kandydat_02_liczba_glosow_waznych"></input></tr>
 			</tr>
 			<tr>
 				<td>3.</td>
-				<td><input type="text" id="kandydat_03_imiona_i_nazwisko"></input></td>
+				<td><input type="text" id="kandydat_03_imiona_i_nazwisko" style="width: 300px"></input></td>
 				<td><input type="text" id="kandydat_03_liczba_glosow_waznych"></input></tr>
 			</tr>
 			<tr>
 				<td>4.</td>
-				<td><input type="text" id="kandydat_04_imiona_i_nazwisko"></input></td>
+				<td><input type="text" id="kandydat_04_imiona_i_nazwisko" style="width: 300px"></input></td>
 				<td><input type="text" id="kandydat_04_liczba_glosow_waznych"></input></tr>
 			</tr>
 			<tr>
 				<td>5.</td>
-				<td><input type="text" id="kandydat_05_imiona_i_nazwisko"></input></td>
+				<td><input type="text" id="kandydat_05_imiona_i_nazwisko" style="width: 300px"></input></td>
 				<td><input type="text" id="kandydat_05_liczba_glosow_waznych"></input></tr>
 			</tr>
 			<tr>
 				<td>&nbsp;</td>
-				<td>Razem:</td>
+				<td style="text-align: right"><b>Razem:</b></td>
 				<td><input type="text" id="suma_glosow_waznych"></input></tr>
 			</tr>
 		</table>	
 
-		<p><b>Uwaga!</b> Suma głosów oddanych na wszystkich kandydatów (rubryka ,,Razem'') <b>musi</b> być równa liczbie z pkt. 6, czyli liczbie głosów ważnych.</p>
+		<p class="uwaga"><b>Uwaga!</b> Suma głosów oddanych na wszystkich kandydatów (rubryka ,,Razem'') <b>musi</b> być równa liczbie z pkt. 6, czyli liczbie głosów ważnych.</p>
 	</fieldset>
 
 	<fieldset>
@@ -162,20 +159,20 @@
 		<table>
 			<tr>
 				<td>9.</td>
-				<td>Uwagi o przypuszczalnej przyczynie ewentualnej różnicy pomiędzy sumą liczb z pkt. 3 i 4, a liczbą z pkt. 2. Jeżeli różnica nie występuje, wpisać &#8222;brak uwag&#8221;</td>
+				<td>Uwagi o przypuszczalnej przyczynie ewentualnej różnicy pomiędzy sumą liczb z pkt. 3 i 4, a liczbą z pkt. 2. Jeżeli różnica nie występuje, wpisać &#8222;brak uwag&#8221;.</td>
 			</tr>
 			<tr>
 				<td>&nbsp;</td>
-				<td><textarea id="uwagi_9" rows="5" cols="80"></textarea>
+				<td><textarea id="uwagi_9" rows="5" cols="90"></textarea>
 			</tr>
 
 			<tr>
 				<td>10.</td>
-				<td>Uwagi o przypuszczalnej przyczynie ewentualnej różnicy pomiędzy liczbą z pkt. 5, a liczbą z pkt. 3. Jeżeli różnica nie występuje, wpisać &#8222;brak uwag&#8221;</td>
+				<td>Uwagi o przypuszczalnej przyczynie ewentualnej różnicy pomiędzy liczbą z pkt. 5, a liczbą z pkt. 3. Jeżeli różnica nie występuje, wpisać &#8222;brak uwag&#8221;.</td>
 			</tr>
 			<tr>
 				<td>&nbsp;</td>
-				<td><textarea id="uwagi_10" rows="5" cols="80"></textarea>
+				<td><textarea id="uwagi_10" rows="5" cols="90"></textarea>
 			</tr>
 
 			<tr>
@@ -184,7 +181,7 @@
 			</tr>
 			<tr>
 				<td>&nbsp;</td>
-				<td><textarea id="uwagi_11" rows="5" cols="80"></textarea>
+				<td><textarea id="uwagi_11" rows="5" cols="90"></textarea>
 			</tr>
 			<tr>
 				<td>12.</td>
@@ -192,7 +189,7 @@
 			</tr>
 			<tr>
 				<td>&nbsp;</td>
-				<td><textarea id="uwagi_12" rows="5" cols="80"></textarea>
+				<td><textarea id="uwagi_12" rows="5" cols="90"></textarea>
 			</tr>
 			<tr>
 				<td>13.</td>
@@ -200,7 +197,7 @@
 			</tr>
 			<tr>
 				<td>&nbsp;</td>
-				<td><textarea id="uwagi_13" rows="5" cols="80"></textarea>
+				<td><textarea id="uwagi_13" rows="5" cols="90"></textarea>
 			</tr>
 			<tr>
 				<td>14.</td>
@@ -208,7 +205,7 @@
 			</tr>
 			<tr>
 				<td>&nbsp;</td>
-				<td><textarea id="uwagi_14" rows="5" cols="80"></textarea>
+				<td><textarea id="uwagi_14" rows="5" cols="90"></textarea>
 			</tr>
 		</table>
 
@@ -237,5 +234,20 @@
 			</tr>
 	</fieldset>
 </form>
+
+<script>
+
+	function initialize() {
+		document.getElementById("kodGminy").value = "020102 2";
+		document.getElementById("nrObwodu").value = "Obwód nr 3";
+		document.getElementById("adresOKW").value = "Szkoła Podstawowa Nr 3, ul. Sienkiewicza 25, w Bełchatowie";
+		document.getElementById("gmina").value = "Nowogrodziec";
+		document.getElementById("powiat").value = "Bolesławiecki";
+		document.getElementById("wojewodztwo").value = "Dolnośląskie";
+		document.getElementById("nrKomisji").value = "1";
+		document.getElementById("miejsceOKW").value = "Bełchatowie";
+	}		
+</script>
+
 </body>
 </html>

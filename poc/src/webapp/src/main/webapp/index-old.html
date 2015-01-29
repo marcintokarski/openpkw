@@ -3,14 +3,12 @@
 <head>
 	<title>Wybory prezydenta Rzeczypospolitej Polskiej</title>
 	<link rel="stylesheet" href="styles.css">
-	<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.2.min.js"></script>
 </head>
-<body>
+<body onload="initialize()">
 
 <form>
 	<h1>Wybory prezydenta Rzeczypospolitej Polskiej</h1>
 
-	<button id="loadDataButton" type="button">Pobierz dane</button>
 	<button type="button" onClick="validate()">Sprawdź</button>
 
 	<fieldset>
@@ -252,37 +250,7 @@
 		document.getElementById("wojewodztwo").value = "Dolnośląskie";
 		document.getElementById("nrKomisji").value = "1";
 		document.getElementById("miejsceOKW").value = "Bełchatowie";
-	}
-
-	$(document).ready(function() {
-		$("#loadDataButton").on( "click", function( event ) {
-			$.ajax({
-			 	url: "http://54.173.158.97:8080/openpkw/data.json",
-			 	success: function( data ) {
-			 		alert(data);
-			 		json = JSON.parse(data);
-		
-			 		kodGminy = json.kodGminy;
-			 		nrObwodu = json.nrObwodu;
-			 		adresOKW = json.adresOKW;
-			 		gmina = json.gmina;
-			 		powiat = json.powiat;
-			 		wojewodztwo = json.wojewodztwo;
-			 		nrKomisji = json.nrKomisji;
-			 		miejsceOKW = json.miejsceOKW;
-		
-					$("#kodGminy").val(kodGminy);
-					$("#nrObwodu").val(nrObwodu);
-					$("#adresOKW").val(adresOKW);
-					$("#gmina").val(gmina);
-					$("#powiat").val(powiat);
-					$("#wojewodztwo").val(wojewodztwo);
-					$("#nrKomisji").val(nrKomisji);
-					$("#miejsceOKW").val(miejsceOKW);
-			 	}
-			 });		
-		});
-	});
+	}		
 </script>
 
 </body>

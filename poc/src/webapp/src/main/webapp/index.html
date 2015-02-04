@@ -6,6 +6,9 @@
 	<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.2.min.js"></script>
 	<script src="jscript/Candidate.js"></script>
 	<script src="jscript/KlkParser.js"></script>
+	<script src="jscript/PollingStationData.js"></script>
+	<script src="jscript/ValidationRules.js"></script> 
+	<script src="jscript/OpenPKW.js"></script>
 </head>
 <body>
 
@@ -14,7 +17,7 @@
 
 	<button id="loadDataButton" type="button">Pobierz dane</button>
 	<button type="button" onClick="validate()">Sprawdź</button>
-	<p>Wersja 3.1. Dane pobierane komisji wyborczej pobierane są z <a href="data.json">pliku JSON</a>, a lista kandydatów pobierana jest z <a href="106101.xml">pliku KLK</a>.</p>
+	<p>Wersja 4. Dane pobierane  pobierane są z <a href="106101.xml">pliku KLK</a>.</p>
 	<fieldset>
 
 	<p>
@@ -265,68 +268,6 @@
 			</tr>
 	</fieldset>
 </form>
-
-<script src="reguly_walidacji.js"></script> 
-
-<script>
-
-	function initialize() {
-		document.getElementById("kodGminy").value = "020102 2";
-		document.getElementById("nrObwodu").value = "Obwód nr 3";
-		document.getElementById("adresOKW").value = "Szkoła Podstawowa Nr 3, ul. Sienkiewicza 25, w Bełchatowie";
-		document.getElementById("gmina").value = "Nowogrodziec";
-		document.getElementById("powiat").value = "Bolesławiecki";
-		document.getElementById("wojewodztwo").value = "Dolnośląskie";
-		document.getElementById("nrKomisji").value = "1";
-		document.getElementById("miejsceOKW").value = "Bełchatowie";
-	}
-
-	$(document).ready(function() {
-		$("#loadDataButton").on( "click", function( event ) {
-			$.ajax({
-			 	url: "http://54.173.158.97:8080/openpkw/data.json",
-			 	success: function( data ) {
-			 		json = JSON.parse(data);
-		
-			 		kodGminy = json.kodGminy;
-			 		nrObwodu = json.nrObwodu;
-			 		adresOKW = json.adresOKW;
-			 		gmina = json.gmina;
-			 		powiat = json.powiat;
-			 		wojewodztwo = json.wojewodztwo;
-			 		nrKomisji = json.nrKomisji;
-			 		miejsceOKW = json.miejsceOKW;
-		
-					$("#kodGminy").val(kodGminy);
-					$("#nrObwodu").val(nrObwodu);
-					$("#adresOKW").val(adresOKW);
-					$("#gmina").val(gmina);
-					$("#powiat").val(powiat);
-					$("#wojewodztwo").val(wojewodztwo);
-					$("#nrKomisji").val(nrKomisji);
-					$("#miejsceOKW").val(miejsceOKW);
-			 	}
-			 });
-
-			// Wczytanie pliku KLK
-			$.ajax({
-    			type: "GET",
-    			url: "http://54.173.158.97:8080/openpkw/106101.xml",
-    			dataType: "xml",
-    			success: function (xml) {
-            		var kandydaci = OpenPKW.KlkParser.loadCandidates(xml);
-            		$(kandydaci).each(function(index) {
-            			var positionOnList = this.positionOnList;
-            			var firstName = this.firstName;
-            			var lastName = this.lastName;
-	            		var textFieldId = "#kandydat_"+positionOnList+"_imiona_i_nazwisko";
-	            		$(textFieldId).val(firstName+" "+lastName);
-            		});
-    			}
-			});
-		});
-	});
-</script>
 
 </body>
 </html>

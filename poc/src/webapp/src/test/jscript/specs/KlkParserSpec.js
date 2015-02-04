@@ -24,6 +24,25 @@ describe("KlkParser", function() {
 			var candidates = parser.loadCandidates(klk_xml);
 			expect(candidates[3].lastName).toBe("KORWIN-MIKKE");
 		});
+	})
 
+	describe("When loading polling station data", function() {
+		it ("should return the community code", function () {
+			var parser= OpenPKW.KlkParser
+			var pollingStationData = parser.loadPollingStationData($.parseXML(klk_xml));
+			expect(pollingStationData.kodGminy).toBe("106101");
+		});
+
+		it ("should return the circuit number", function () {
+			var parser= OpenPKW.KlkParser
+			var pollingStationData = parser.loadPollingStationData($.parseXML(klk_xml));
+			expect(pollingStationData.nrObwodu).toBe("1");
+		});
+
+		it ("should return the circuit location", function () {
+			var parser= OpenPKW.KlkParser
+			var pollingStationData = parser.loadPollingStationData($.parseXML(klk_xml));
+			expect(pollingStationData.siedzibaKomisjiObwodowej).toBe("Studio Consulting sp. z o.o., ul. Romanowska 55F");
+		});		
 	})
 });

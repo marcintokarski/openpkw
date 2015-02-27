@@ -1,0 +1,10 @@
+WOJ, POW, GMI, RODZ: NAZDOD
+true, false, false, false: 'województwo'
+true, true, false, false: 'powiat','miasto na prawach powiatu','miasto stołeczne, na prawach powiatu'
+true, true, true, 1: 'gmina miejska','gmina miejska, miasto stołeczne'
+true, true, true, 2: 'gmina wiejska'
+true, true, true, 3: 'gmina miejsko-wiejska'
+true, true, true, 4: 'miasto'
+true, true, true, 5: 'obszar wiejski'
+true, true, true, 9: 'delegatura'
+true, true, true, 8: 'dzielnica'

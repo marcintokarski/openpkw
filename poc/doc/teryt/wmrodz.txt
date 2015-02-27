@@ -1,0 +1,12 @@
+01 wieś                    
+02 kolonia                 
+03 przysiółek              
+04 osada                   
+05 osada leśna             
+06 osiedle                 
+07 schronisko turystyczne  
+95 dzielnica m. st. Warszawy
+96 miasto                  
+98 delegatura              
+99 część miasta            
+00 część miejscowości

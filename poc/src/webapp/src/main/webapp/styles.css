@@ -1,18 +1,30 @@
 body {
 	font-size: 16px;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 h1 {
 	color: red;
 	text-align: center;
+	font-size: 24px;
+	border-bottom: 1px solid red;
 }
 
 h2 {
-
+	text-align: center;	
+	font-size: 24px;
+	text-transform: uppercase;
 }
 
 h3 {
-	text-align: center;	
+	font-size: 20px;
+	text-transform: uppercase;
+}
+
+h4 {
+	font-size: 20px;
+	font-weight: bold;
 }
 
 fieldset {
@@ -41,4 +53,43 @@ input {
 
 textarea {
 	color: blue;
+}
+
+table {
+	width: 100%;
+	background-color: #f0f0f0;
+}
+
+.with_borders {
+	border: 1px solid #a0a0a0;
+	border-collapse: collapse;
+}
+
+tr {
+	height: 55px;
+}
+
+table.with_borders tr {
+	border: 1px solid #a0a0a0;
+}
+
+tr.uwaga {
+	border: none;
+	background-color: white;
+}
+
+td {
+	padding: 5px;
+}
+
+table.with_borders td {
+	border: 1px solid #a0a0a0;
+}
+
+.lp {
+	text-align: center;
+}
+
+.info {
+	text-align: center;
 }

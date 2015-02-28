@@ -37,4 +37,5 @@ function fillPollingStationData(pollingStationData) {
 	$("#wojewodztwo").val(pollingStationData.wojewodztwo);
 	$("#nrKomisji").val(pollingStationData.numerKomisjiOkregowej);
 	$("#miejsceOKW").val(pollingStationData.siedzibaKomisjiOkregowej);
+	$("#liczbaWyborcow").val(pollingStationData.liczbaWyborcow);
 }

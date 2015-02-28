@@ -27,8 +27,9 @@ OpenPKW.KlkParser = {
 		var wojewodztwo = OpenPKW.KlkParser.getAttribute(xml, "/kalkulator/akcja/jednostka/jednostka/jnsNazwa");
 		var numerKomisjiOkregowej = OpenPKW.KlkParser.getAttribute(xml, "/kalkulator/akcja/jednostka/jednostka/jednostka/organWyborczy/slownik/wpis[@typ='NUMER']");
 		var siedzibaKomisjiOkregowej = OpenPKW.KlkParser.getAttribute(xml, "/kalkulator/akcja/jednostka/jednostka/jednostka/organWyborczy/slownik/wpis[@typ='MIEJSCOWNIK_W']");
+		var liczbaWyborcow = OpenPKW.KlkParser.getAttribute(xml, "/kalkulator/akcja/jednostka/jednostka/jednostka/obwod[1]/obwodPzt/@oodLiczbaWyborcow");
 
-		result = new OpenPKW.PollingStationData(kodGminy, nrObwodu, siedzibaKomisjiObwodowej, gmina, powiat, wojewodztwo, numerKomisjiOkregowej, siedzibaKomisjiOkregowej);
+		result = new OpenPKW.PollingStationData(kodGminy, nrObwodu, siedzibaKomisjiObwodowej, gmina, powiat, wojewodztwo, numerKomisjiOkregowej, siedzibaKomisjiOkregowej, liczbaWyborcow);
 		return result;
 	},
 

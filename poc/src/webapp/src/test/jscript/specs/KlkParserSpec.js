@@ -26,23 +26,31 @@ describe("KlkParser", function() {
 		});
 	})
 
-	describe("When loading polling station data", function() {
+	describe("When loading polling stations data", function() {
+		it ("should return list of all polling stations", function() {
+			var parser = OpenPKW.KlkParser
+			var pollingStationsData = parser.loadPollingStationsData($.parseXML(klk_xml));
+			expect(pollingStationsData.length).toBe(397);
+		});
+	});
+
+	describe("When loading single polling station data", function() {
 		it ("should return the community code", function () {
 			var parser= OpenPKW.KlkParser
-			var pollingStationData = parser.loadPollingStationData($.parseXML(klk_xml));
-			expect(pollingStationData.kodGminy).toBe("106101");
+			var pollingStationsData = parser.loadPollingStationsData($.parseXML(klk_xml));
+			expect(pollingStationsData[2].kodGminy).toBe("106101");
 		});
 
 		it ("should return the circuit number", function () {
 			var parser= OpenPKW.KlkParser
-			var pollingStationData = parser.loadPollingStationData($.parseXML(klk_xml));
-			expect(pollingStationData.nrObwodu).toBe("1");
+			var pollingStationsData = parser.loadPollingStationsData($.parseXML(klk_xml));
+			expect(pollingStationsData[2].nrObwodu).toBe("3");
 		});
 
 		it ("should return the circuit location", function () {
 			var parser= OpenPKW.KlkParser
-			var pollingStationData = parser.loadPollingStationData($.parseXML(klk_xml));
-			expect(pollingStationData.siedzibaKomisjiObwodowej).toBe("Studio Consulting sp. z o.o., ul. Romanowska 55F");
+			var pollingStationsData = parser.loadPollingStationsData($.parseXML(klk_xml));
+			expect(pollingStationsData[2].siedzibaKomisjiObwodowej).toBe("Świetlica OSP, ul. Plonowa 18");
 		});		
 	})
 });

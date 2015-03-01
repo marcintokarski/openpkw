@@ -11,8 +11,8 @@ $(document).ready(function() {
 				var candidates = OpenPKW.KlkParser.loadCandidates(xml);
 				fillCandidates(candidates);
 
-				var pollingStationData = OpenPKW.KlkParser.loadPollingStationData(xml);
-				fillPollingStationData(pollingStationData);
+				var pollingStationsData = OpenPKW.KlkParser.loadPollingStationsData(xml);
+				fillPollingStationsData(pollingStationsData);
 			}
 		});
 	});
@@ -28,7 +28,9 @@ function fillCandidates(candidates) {
 	});
 }
 
-function fillPollingStationData(pollingStationData) {
+function fillPollingStationsData(pollingStationsData) {
+	var pollingStationData = pollingStationsData[0];
+
 	$("#kodGminy").val(pollingStationData.kodGminy);
 	$("#nrObwodu").val(pollingStationData.nrObwodu);
 	$("#adresOKW").val(pollingStationData.siedzibaKomisjiObwodowej);

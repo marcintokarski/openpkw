@@ -1,7 +1,10 @@
 var OpenPKW = OpenPKW || {};
 
+
+var pollingStationsData;
+
 $(document).ready(function() {
-	$("#loadDataButton").on( "click", function( event ) {
+	$("#loadDataButton").on("click", function( event ) {
 		// Wczytanie pliku KLK
 		$.ajax({
 			type: "GET",
@@ -11,10 +14,14 @@ $(document).ready(function() {
 				var candidates = OpenPKW.KlkParser.loadCandidates(xml);
 				fillCandidates(candidates);
 
-				var pollingStationData = OpenPKW.KlkParser.loadPollingStationData(xml);
-				fillPollingStationData(pollingStationData);
+				pollingStationsData = OpenPKW.KlkParser.loadPollingStationsData(xml);
+				fillPollingStationsData(pollingStationsData);
 			}
 		});
+	});
+
+	$("#wyborOKW").on("change", function(event) {
+		updatePollingStationData();
 	});
 });
 
@@ -28,7 +35,15 @@ function fillCandidates(candidates) {
 	});
 }
 
-function fillPollingStationData(pollingStationData) {
+function fillPollingStationsData(pollingStationsData) {
+	var adresOKW = $('#wyborOKW');
+	$.each(pollingStationsData, function(idx, pollingStationData) {
+    	adresOKW.append(
+	        $('<option></option>').val(idx).html("Obwód nr "+pollingStationData.nrObwodu+": "+pollingStationData.siedzibaKomisjiObwodowej)
+	    );
+	});
+
+	var pollingStationData = pollingStationsData[0];
 	$("#kodGminy").val(pollingStationData.kodGminy);
 	$("#nrObwodu").val(pollingStationData.nrObwodu);
 	$("#adresOKW").val(pollingStationData.siedzibaKomisjiObwodowej);
@@ -37,5 +52,14 @@ function fillPollingStationData(pollingStationData) {
 	$("#wojewodztwo").val(pollingStationData.wojewodztwo);
 	$("#nrKomisji").val(pollingStationData.numerKomisjiOkregowej);
 	$("#miejsceOKW").val(pollingStationData.siedzibaKomisjiOkregowej);
+	$("#liczbaWyborcow").val(pollingStationData.liczbaWyborcow);
+}
+
+function updatePollingStationData() {
+	var idx = $("#wyborOKW").find("option:selected").val();
+	var pollingStationData = pollingStationsData[idx];
+	$("#kodGminy").val(pollingStationData.kodGminy);
+	$("#nrObwodu").val(pollingStationData.nrObwodu);
+	$("#adresOKW").val(pollingStationData.siedzibaKomisjiObwodowej);
 	$("#liczbaWyborcow").val(pollingStationData.liczbaWyborcow);
 }

@@ -16,9 +16,12 @@
 <form>
 	<h1>Kalkulator OpenPKW - Komisja Obwodowa</h1>
 	<input type="hidden" id="liczba_wyborcow" value="">
-	<p class="info">Wersja 5. Dane pobierane  pobierane są z <a href="106101.xml">pliku KLK</a>.</p>
+	<p class="info">Wersja 6. Dane pobierane  pobierane są z <a href="106101.xml">pliku KLK</a>, można wybrać komisję obwodową.</p>
 	<button id="loadDataButton" type="button">Pobierz dane</button>
-	<button type="button" onClick="validate()">Sprawdź</button>
+	<label for="wyborOKW">Wybierz obwód</label>
+	<select id="wyborOKW" style="width: 400px"></select>
+	<button type="button" onClick="validate()">Sprawdź formularz</button>
+	<hr>
 
 	<table class="with_borders">
 		<tr>
@@ -33,6 +36,7 @@
 		<tr>
 			<td colspan="2" style="text-align: right">Siedziba Obwodowej Komisji Wyborczej (adres)</td>
 			<td colspan="4"><input type="text" id="adresOKW" style="width: 493px"></td>
+			</td>
 		</tr>
 		<tr>
 			<td style="text-align: right">Gmina/Dzielnica</td>

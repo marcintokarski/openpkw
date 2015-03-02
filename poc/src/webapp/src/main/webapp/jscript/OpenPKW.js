@@ -1,9 +1,13 @@
 var OpenPKW = OpenPKW || {};
 
-
 var pollingStationsData;
+var geographyTaxonomy;
 
 $(document).ready(function() {
+
+	loadGeographyTaxonomy();
+	fillVoivodships();
+
 	$("#loadDataButton").on("click", function( event ) {
 		// Wczytanie pliku KLK
 		$.ajax({
@@ -23,6 +27,14 @@ $(document).ready(function() {
 	$("#wyborOKW").on("change", function(event) {
 		updatePollingStationData();
 	});
+
+	$("#wyborWojewodztwa").on("change", function(event) {
+		fillDistricts();
+	});
+
+	$("#wyborPowiatu").on("change", function(event) {
+		fillCommunities();
+	})
 });
 
 function fillCandidates(candidates) {
@@ -62,4 +74,69 @@ function updatePollingStationData() {
 	$("#nrObwodu").val(pollingStationData.nrObwodu);
 	$("#adresOKW").val(pollingStationData.siedzibaKomisjiObwodowej);
 	$("#liczbaWyborcow").val(pollingStationData.liczbaWyborcow);
+}
+
+function loadGeographyTaxonomy() {
+	var voivodships = new Array();
+	voivodships[0] = {id : "02", name: "DOLNOŚLĄSKIE", children: [
+		{id:"00", name: "bolesławiecki", children: [
+			{id:"01", name: "Bolesławiec (gmina miejska)"},
+			{id:"02", name: "Bolesławiec (gmina wiejska)"}
+		]},
+		{id:"01", name: "dzierżoniowski", children: [
+			{id:"01", name: "Bielawa"},
+			{id:"02", name: "Dzierżoniów"}
+		]}
+	]};
+	voivodships[1] = {id : "04", name: "KUJAWSKO-POMORSKIE", children: [
+		{id:"01", name: "aleksandrowski", children: [
+			{id: "01", name: "Aleksandrów Kujawski"},
+			{id: "02", name: "Ciechocinek"}
+		]},
+		{id:"02", name: "brodnicki", children: [
+			{id: "01", name: "Brodnica"},
+			{id: "02", name: "Bobrowo"}
+		]}
+	]};
+
+	geographyTaxonomy = voivodships;
+}
+
+function fillVoivodships() {
+	var wyborWojewodztwa = $("#wyborWojewodztwa");
+	wyborWojewodztwa.empty();
+	$.each(geographyTaxonomy, function(idx, voivodship) {
+    	wyborWojewodztwa.append(
+	        $('<option></option>').val(idx).html(voivodship.name+" (id: "+voivodship.id+")")
+	    );
+	});
+	fillDistricts();
+}
+
+function fillDistricts() {
+	var voivodshipIdx = $("#wyborWojewodztwa").find("option:selected").val();
+	var districts = geographyTaxonomy[voivodshipIdx].children;
+	var wyborPowiatu = $("#wyborPowiatu");
+	wyborPowiatu.empty();
+	$.each(districts, function(idx, district) {
+    	wyborPowiatu.append(
+	        $('<option></option>').val(idx).html(district.name+" (id: "+district.id+")")
+	    );
+	});
+	fillCommunities();
+}
+
+function fillCommunities() {
+	var voivodshipIdx = $("#wyborWojewodztwa").find("option:selected").val();
+	var districtIdx = $("#wyborPowiatu").find("option:selected").val();
+	var districts = geographyTaxonomy[voivodshipIdx].children;
+	var communities = districts[districtIdx].children;
+
+	var wyborGminy = $("#wyborGminy");
+	wyborGminy.empty();
+	$.each(communities, function(idx, community) {
+    	wyborGminy.append(
+	        $('<option></option>').val(idx).html(community.name+" (id: "+community.id+")")
+	    );
+	});
 }

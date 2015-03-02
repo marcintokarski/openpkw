@@ -6,22 +6,10 @@ var geographyTaxonomy;
 $(document).ready(function() {
 
 	loadGeographyTaxonomy();
-	fillVoivodships();
+	loadPollingStationsData();
 
 	$("#loadDataButton").on("click", function( event ) {
 		// Wczytanie pliku KLK
-		$.ajax({
-			type: "GET",
-			url: "http://54.173.158.97:8080/openpkw/106101.xml",
-			dataType: "xml",
-			success: function (xml) {
-				var candidates = OpenPKW.KlkParser.loadCandidates(xml);
-				fillCandidates(candidates);
-
-				pollingStationsData = OpenPKW.KlkParser.loadPollingStationsData(xml);
-				fillPollingStationsData(pollingStationsData);
-			}
-		});
 	});
 
 	$("#wyborOKW").on("change", function(event) {
@@ -44,6 +32,20 @@ function fillCandidates(candidates) {
 		var lastName = this.lastName;
 		var textFieldId = "#kandydat_"+positionOnList+"_imiona_i_nazwisko";
 		$(textFieldId).val(firstName+" "+lastName);
+	});
+}
+
+function loadPollingStationsData() {
+	$.ajax({
+		type: "GET",
+		url: "http://54.173.158.97:8080/openpkw/106101.xml",
+		dataType: "xml",
+		success: function (xml) {
+			var candidates = OpenPKW.KlkParser.loadCandidates(xml);
+			fillCandidates(candidates);
+			pollingStationsData = OpenPKW.KlkParser.loadPollingStationsData(xml);
+			fillPollingStationsData(pollingStationsData);
+		}
 	});
 }
 
@@ -77,29 +79,15 @@ function updatePollingStationData() {
 }
 
 function loadGeographyTaxonomy() {
-	var voivodships = new Array();
-	voivodships[0] = {id : "02", name: "DOLNOŚLĄSKIE", children: [
-		{id:"00", name: "bolesławiecki", children: [
-			{id:"01", name: "Bolesławiec (gmina miejska)"},
-			{id:"02", name: "Bolesławiec (gmina wiejska)"}
-		]},
-		{id:"01", name: "dzierżoniowski", children: [
-			{id:"01", name: "Bielawa"},
-			{id:"02", name: "Dzierżoniów"}
-		]}
-	]};
-	voivodships[1] = {id : "04", name: "KUJAWSKO-POMORSKIE", children: [
-		{id:"01", name: "aleksandrowski", children: [
-			{id: "01", name: "Aleksandrów Kujawski"},
-			{id: "02", name: "Ciechocinek"}
-		]},
-		{id:"02", name: "brodnicki", children: [
-			{id: "01", name: "Brodnica"},
-			{id: "02", name: "Bobrowo"}
-		]}
-	]};
-
-	geographyTaxonomy = voivodships;
+	$.ajax({
+		type: "GET",
+		url: "http://54.173.158.97:8080/openpkw/teryt.json",
+		dataType: "json",
+		success: function (json) {
+			geographyTaxonomy = json;
+			fillVoivodships();
+		}
+	});
 }
 
 function fillVoivodships() {
@@ -107,7 +95,7 @@ function fillVoivodships() {
 	wyborWojewodztwa.empty();
 	$.each(geographyTaxonomy, function(idx, voivodship) {
     	wyborWojewodztwa.append(
-	        $('<option></option>').val(idx).html(voivodship.name+" (id: "+voivodship.id+")")
+	        $('<option></option>').val(idx).html(voivodship.name)
 	    );
 	});
 	fillDistricts();
@@ -120,7 +108,7 @@ function fillDistricts() {
 	wyborPowiatu.empty();
 	$.each(districts, function(idx, district) {
     	wyborPowiatu.append(
-	        $('<option></option>').val(idx).html(district.name+" (id: "+district.id+")")
+	        $('<option></option>').val(idx).html(district.name+" ("+district.type+")")
 	    );
 	});
 	fillCommunities();
@@ -136,7 +124,7 @@ function fillCommunities() {
 	wyborGminy.empty();
 	$.each(communities, function(idx, community) {
     	wyborGminy.append(
-	        $('<option></option>').val(idx).html(community.name+" (id: "+community.id+")")
+	        $('<option></option>').val(idx).html(community.name+" ("+community.type+")")
 	    );
 	});
 }

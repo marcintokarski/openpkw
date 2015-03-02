@@ -16,10 +16,19 @@
 <form>
 	<h1>Kalkulator OpenPKW - Komisja Obwodowa</h1>
 	<input type="hidden" id="liczba_wyborcow" value="">
-	<p class="info">Wersja 6. Dane pobierane  pobierane są z <a href="106101.xml">pliku KLK</a>, można wybrać komisję obwodową.</p>
-	<button id="loadDataButton" type="button">Pobierz dane</button>
-	<label for="wyborOKW">Wybierz obwód</label>
-	<select id="wyborOKW" style="width: 400px"></select>
+	<p class="info">Wersja 7. Taksonomia geograficzna pobierana jest ze słownika <a href="teryt.json">TERYT</a>. Dane komisji obwodowych pobierane pobierane są z <a href="106101.xml">pliku KLK</a> (na razie tylko dla Łodzi).</p>
+	<div>
+		<label for="wyborWojewodztwa" style="width: 150px; display: inline-block">Wybierz wyjewództwo</label>
+		<select id="wyborWojewodztwa" style="width: 200px"></select>
+		<label for="wyborPowiatu" style="width: 120px; display: inline-block">Wybierz powiat</label>
+		<select id="wyborPowiatu" style="width: 300px"></select>
+	</div>
+	<div>
+		<label for="wyborGminy" style="width: 150px; display: inline-block">Wybierz gminę</label>
+		<select id="wyborGminy" style="width: 200px"></select>
+		<label for="wyborOKW" style="width: 120px; display: inline-block">Wybierz obwód</label>
+		<select id="wyborOKW" style="width: 300px"></select>
+	</div>		
 	<button type="button" onClick="validate()">Sprawdź formularz</button>
 	<hr>
 

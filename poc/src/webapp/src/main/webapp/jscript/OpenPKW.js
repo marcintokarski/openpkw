@@ -1,28 +1,28 @@
 var OpenPKW = OpenPKW || {};
 
-
 var pollingStationsData;
+var geographyTaxonomy;
 
 $(document).ready(function() {
+
+	loadGeographyTaxonomy();
+	loadPollingStationsData();
+
 	$("#loadDataButton").on("click", function( event ) {
 		// Wczytanie pliku KLK
-		$.ajax({
-			type: "GET",
-			url: "http://54.173.158.97:8080/openpkw/106101.xml",
-			dataType: "xml",
-			success: function (xml) {
-				var candidates = OpenPKW.KlkParser.loadCandidates(xml);
-				fillCandidates(candidates);
-
-				pollingStationsData = OpenPKW.KlkParser.loadPollingStationsData(xml);
-				fillPollingStationsData(pollingStationsData);
-			}
-		});
 	});
 
 	$("#wyborOKW").on("change", function(event) {
 		updatePollingStationData();
 	});
+
+	$("#wyborWojewodztwa").on("change", function(event) {
+		fillDistricts();
+	});
+
+	$("#wyborPowiatu").on("change", function(event) {
+		fillCommunities();
+	})
 });
 
 function fillCandidates(candidates) {
@@ -32,6 +32,20 @@ function fillCandidates(candidates) {
 		var lastName = this.lastName;
 		var textFieldId = "#kandydat_"+positionOnList+"_imiona_i_nazwisko";
 		$(textFieldId).val(firstName+" "+lastName);
+	});
+}
+
+function loadPollingStationsData() {
+	$.ajax({
+		type: "GET",
+		url: "http://54.173.158.97:8080/openpkw/106101.xml",
+		dataType: "xml",
+		success: function (xml) {
+			var candidates = OpenPKW.KlkParser.loadCandidates(xml);
+			fillCandidates(candidates);
+			pollingStationsData = OpenPKW.KlkParser.loadPollingStationsData(xml);
+			fillPollingStationsData(pollingStationsData);
+		}
 	});
 }
 
@@ -62,4 +76,55 @@ function updatePollingStationData() {
 	$("#nrObwodu").val(pollingStationData.nrObwodu);
 	$("#adresOKW").val(pollingStationData.siedzibaKomisjiObwodowej);
 	$("#liczbaWyborcow").val(pollingStationData.liczbaWyborcow);
+}
+
+function loadGeographyTaxonomy() {
+	$.ajax({
+		type: "GET",
+		url: "http://54.173.158.97:8080/openpkw/teryt.json",
+		dataType: "json",
+		success: function (json) {
+			geographyTaxonomy = json;
+			fillVoivodships();
+		}
+	});
+}
+
+function fillVoivodships() {
+	var wyborWojewodztwa = $("#wyborWojewodztwa");
+	wyborWojewodztwa.empty();
+	$.each(geographyTaxonomy, function(idx, voivodship) {
+    	wyborWojewodztwa.append(
+	        $('<option></option>').val(idx).html(voivodship.name)
+	    );
+	});
+	fillDistricts();
+}
+
+function fillDistricts() {
+	var voivodshipIdx = $("#wyborWojewodztwa").find("option:selected").val();
+	var districts = geographyTaxonomy[voivodshipIdx].children;
+	var wyborPowiatu = $("#wyborPowiatu");
+	wyborPowiatu.empty();
+	$.each(districts, function(idx, district) {
+    	wyborPowiatu.append(
+	        $('<option></option>').val(idx).html(district.name+" ("+district.type+")")
+	    );
+	});
+	fillCommunities();
+}
+
+function fillCommunities() {
+	var voivodshipIdx = $("#wyborWojewodztwa").find("option:selected").val();
+	var districtIdx = $("#wyborPowiatu").find("option:selected").val();
+	var districts = geographyTaxonomy[voivodshipIdx].children;
+	var communities = districts[districtIdx].children;
+
+	var wyborGminy = $("#wyborGminy");
+	wyborGminy.empty();
+	$.each(communities, function(idx, community) {
+    	wyborGminy.append(
+	        $('<option></option>').val(idx).html(community.name+" ("+community.type+")")
+	    );
+	});
 }

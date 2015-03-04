@@ -38,7 +38,7 @@ function fillCandidates(candidates) {
 function loadPollingStationsData() {
 	$.ajax({
 		type: "GET",
-		url: "http://54.173.158.97:8080/openpkw/106101.xml",
+		url: "106101.xml",
 		dataType: "xml",
 		success: function (xml) {
 			var candidates = OpenPKW.KlkParser.loadCandidates(xml);
@@ -81,7 +81,7 @@ function updatePollingStationData() {
 function loadGeographyTaxonomy() {
 	$.ajax({
 		type: "GET",
-		url: "http://54.173.158.97:8080/openpkw/teryt.json",
+		url: "teryt.json",
 		dataType: "json",
 		success: function (json) {
 			geographyTaxonomy = json;

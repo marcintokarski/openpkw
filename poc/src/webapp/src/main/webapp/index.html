@@ -9,6 +9,7 @@
 	<script src="jscript/KlkParser.js"></script>
 	<script src="jscript/PollingStationData.js"></script>
 	<script src="jscript/ValidationRules.js"></script> 
+	<script src="jscript/Sending.js"></script> 
 	<script src="jscript/OpenPKW.js"></script>
 </head>
 <body>
@@ -30,6 +31,8 @@
 		<select id="wyborOKW" style="width: 300px"></select>
 	</div>		
 	<button type="button" onClick="validate()">Sprawdź formularz</button>
+	<button type="button" onClick="send()">Wyślij formularz</button>
+	<button type="button" onClick="print()">Wydrukuj formularz</button>
 	<hr>
 
 	<table class="with_borders">

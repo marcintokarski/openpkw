@@ -1,150 +1,121 @@
-﻿<!DOCTYPE html>
-<meta charset="UTF-8"> 
-<html>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<title>Wybory prezydenta Rzeczypospolitej Polskiej</title>
-	<link rel="stylesheet" href="styles.css">
-	<script src="jscript/jquery-1.11.2.min.js"></script>
-	<script src="jscript/Candidate.js"></script>
-	<script src="jscript/KlkParser.js"></script>
-	<script src="jscript/PollingStationData.js"></script>
-	<script src="jscript/ValidationRules.js"></script> 
-	<script src="jscript/Sending.js"></script> 
-	<script src="jscript/OpenPKW.js"></script>
+	<link rel="stylesheet" href="styles.css"/>
 </head>
 <body>
 
 <form>
-	<h1>Kalkulator OpenPKW - Komisja Obwodowa</h1>
-	<input type="hidden" id="liczba_wyborcow" value="">
-	<p class="info">Wersja 9. Wstępna wersja drukowania formularza jako pliku PDF. Zalążek generowania formularza w formacie XML. Taksonomia geograficzna pobierana jest ze słownika <a href="teryt.json">TERYT</a>. Dane komisji obwodowych pobierane pobierane są z <a href="106101.xml">pliku KLK</a> (na razie tylko dla Łodzi).</p>
-	<div>
-		<label for="wyborWojewodztwa" style="width: 150px; display: inline-block">Wybierz wyjewództwo</label>
-		<select id="wyborWojewodztwa" style="width: 200px"></select>
-		<label for="wyborPowiatu" style="width: 120px; display: inline-block">Wybierz powiat</label>
-		<select id="wyborPowiatu" style="width: 300px"></select>
-	</div>
-	<div>
-		<label for="wyborGminy" style="width: 150px; display: inline-block">Wybierz gminę</label>
-		<select id="wyborGminy" style="width: 200px"></select>
-		<label for="wyborOKW" style="width: 120px; display: inline-block">Wybierz obwód</label>
-		<select id="wyborOKW" style="width: 300px"></select>
-	</div>		
-	<button type="button" onClick="validate()">Sprawdź formularz</button>
-	<button type="button" onClick="send()">Wyślij formularz</button>
-	<button type="button" onClick="location.href='/openpkw/PdfServlet'">Wydrukuj formularz</button>
-	<hr>
-
 	<table class="with_borders">
 		<tr>
 			<td colspan="6"><h2>Wybory Prezydenta Rzeczypospolitej Polskiej</h2></td>
 		</tr>
 		<tr>
 			<td colspan="2" style="text-align: right">Kod terytorialny gminy<br/>(dzielnicy w m. st. Warszawie)</td>
-			<td><input type="text" id="kodGminy" style="width:50px"></td>
+			<td></td>
 			<td colspan="2" style="text-align:right">Nr obwodu głosowania</td>
-			<td><input type="text" id="nrObwodu"></td>
+			<td></td>
 		</tr>
 		<tr>
 			<td colspan="2" style="text-align: right">Siedziba Obwodowej Komisji Wyborczej (adres)</td>
-			<td colspan="4"><input type="text" id="adresOKW" style="width: 493px"></td>
+			<td colspan="4"></td>
 		</tr>
 		<tr>
 			<td style="text-align: right">Gmina/Dzielnica</td>
-			<td><input type="text" id="gmina" style="width: 130px"></td>
+			<td></td>
 			<td style="text-align: right">Powiat</td>
-			<td><input type="text" id="powiat" style="width: 130px"></td>
-			<td style="text-align: right">Województwo</td>
-			<td><input type="text" id="wojewodztwo" style="width: 180px"></td>
+			<td></td>
+			<td style="text-align: right">Wojew�dztwo</td>
+			<td></td>
 		</tr>
 	</table>
 
     <h2>Protokół wyników głosowania w obwodzie<br />
         w wyborach Prezydenta Rzeczypospolitej Polskiej<br />
-		przeprowadzonego w dniu <input type="text" id="dataGlosowania" style="width: 400px"></h2>
-	<p>Głosowanie rozpoczęło się w dniu
-	<input type="text" id="dzienGlosowania">
-	o godz.
-	<input type="text" id="godzinaGlosowaniaOd" style="width: 50px">
-	i trwało do godz.
-	<input type="text" id="godzinaGlosowaniaDo" style="width: 50px">.</p>
+		przeprowadzonego w dniu ...</h2>
+	<p>Głosowanie rozpoczęło się w dniu ... 	
+	o godz. ... i trwało do godz.
+	.</p>
 
 	<h3>I. Rozliczenie kart do głosowania</h3>
 	<table class="with_borders">
 		<tr>
 			<td class="lp">1.</td>
 			<td>Liczba wyborców uprawnionych do głosowania <i>(umieszczonych w spisie, z uwzględnieniem dodatkowych formularzy)</i> w chwili zakończenia głosowania</td>
-			<td><input type="text" id="liczba_1_1"></td>
+			<td>...</td>
 		</tr>
 		<tr>
 			<td class="lp">2.</td>
 			<td>Komisja otrzymała kart do głosowania</td>
-			<td><input type="text" id="liczba_1_2"></td>
+			<td>...</td>
 		</tr>
 		<tr>
 			<td class="lp">3.</td>
 			<td>Nie wykorzystano kart do głosowania</td>
-			<td><input type="text" id="liczba_1_3"></td>
+			<td>...</td>
 		</tr>
 		<tr>
 			<td class="lp">4.</td>
 			<td>Liczba wyborców, którym wydano karty do głosowania</td>
-			<td><input type="text" id="liczba_1_4"></td>
+			<td>...</td>
 		</tr>
 		<tr class="uwaga">
 			<td colspan="3" class="uwaga"><b>Uwaga!</b> Suma liczb z pkt. 3 i 4 powinna być równa liczbie z pkt. 2. Jeśli tak nie jest, przypuszczalną przyczynę należy omówić w pkt. 9.</td>
+		</tr>
 		<tr>
 			<td class="lp">5.</td>
 			<td>Liczba wyborców głosujących przez pełnomocnika <i>(liczba kart do głosowania wydanych na podstawie otrzymanych przez komisję aktów pełnomocnictwa)</i></td>
-			<td><input type="text" id="liczba_1_5"></td>
+			<td>...</td>
 		</tr>
 		<tr class="uwaga"><td colspan="3"></td></tr>
 		<tr>
 			<td class="lp">6.</td>
 			<td>Liczba wyborców głosujących na podstawie zaświadczenia o prawie do głosowania</td>
-			<td><input type="text" id="liczba_1_6"></td>
+			<td>...</td>
 		</tr>
 		<tr class="uwaga"><td colspan="3"></td></tr>
 		<tr>
 			<td class="lp">7.</td>
 			<td>Liczba wyborców, którym wysłano pakiety wyborcze</td>
-			<td><input type="text" id="liczba_1_7"></td>
+			<td>...</td>
 		</tr>
 		<tr>
 			<td class="lp">8.</td>
 			<td>Liczba otrzymanych kopert zwrotnych</td>
-			<td><input type="text" id="liczba_1_8"></td>
+			<td>...</td>
 		</tr>
 		<tr>
 			<td class="lp">8a.</td>
 			<td>Liczba kopert zwrotnych, w których nie było oświadczenia o osobistym i tajnym oddaniu głosu</td>
-			<td><input type="text" id="liczba_1_8_a"></td>
+			<td>...</td>
 		</tr>
 		<tr>
 			<td class="lp">8b.</td>
 			<td>Liczba kopert zwrotnych, w których oświadczenie nie było podpisane przez wyborcę</td>
-			<td><input type="text" id="liczba_1_8_b"></td>
+			<td>...</td>
 		</tr>
 		<tr>
 			<td class="lp">8c.</td>
 			<td>Liczba kopert zwrotnych, w których nie było koperty na kartę do głosowania</td>
-			<td><input type="text" id="liczba_1_8_c"></td>
+			<td>...</td>
 		</tr>
 		<tr>
 			<td class="lp">8d.</td>
 			<td>Liczba kopert zwrotnych, w których znajdowała się niezaklejona koperta na kartę do głosowania</td>
-			<td><input type="text" id="liczba_1_8_d"></td>
+			<td>...</td>
 		</tr>
 		<tr>
 			<td class="lp">8e.</td>
 			<td>Liczba kopert na kartę do głosowania wrzuconych do urny</td>
-			<td><input type="text" id="liczba_1_8_e"></td>
+			<td>...</td>
 		</tr>
 		<tr class="uwaga">
-			<td colspan="3"><b>Uwaga!</b> Liczba z pkt. 8 nie może być większa od liczby z pkt. 7. Suma liczba z pkt. 8a–8e nie może być większa od liczby z pkt. 8.
+			<td colspan="3"><b>Uwaga!</b> Liczba z pkt. 8 nie może być większa od liczby z pkt. 7. Suma liczba z pkt. 8a–8e nie może być większa od liczby z pkt. 8.</td>
 		</tr>
 	</table>
-
+ 
 	<h3>II. Ustalenie wyników głosowania</h3>
 	<p>Komisja stwierdziła, że pieczęcie na urnie pozostały nienaruszone. Po wyjęciu kart z urny Komisja ustaliła na ich podstawie następujące wyniki głosowania:</p>
 
@@ -152,12 +123,12 @@
 		<tr>
 			<td class="lp">9.</td>
 			<td>Liczba kart wyjętych z urny</td>
-			<td><input type="text" id="liczba_1_9"></td>
+			<td>...</td>
 		</tr>
 		<tr>
 			<td class="lp">9a.</td>
 			<td>w tym liczba kart wyjętych z kopert na kartę do głosowania</td>
-			<td><input type="text" id="liczba_1_9_a"></td>
+			<td>...</td>
 		</tr>
 		<tr class="uwaga">
 			<td colspan="3"><b>Uwaga!</b> Liczba z pkt. 9 pomniejszona o liczbę z pkt. 9a powinna być równa liczbie z pkt. 4. Dodatkowo liczba z pkt. 9a nie powinna być większa od liczby z pkt. 8e; jeśli tak nie jest &mdash; przypuszczalną przyczynę należy opisać w punkcie 16.</td>
@@ -165,12 +136,12 @@
 		<tr>
 			<td class="lp">10.</td>
 			<td>Liczba kart nieważnych <i>(innych niż urzędowo ustalone lub nieopatrzonych pieczęcią obwodowej komisji wyborczej)</i></td>
-			<td><input type="text" id="liczba_1_10"></td>
+			<td>...</td>
 		</tr>
 		<tr>
 			<td class="lp">11.</td>
 			<td>Liczba kart ważnych</td>
-			<td><input type="text" id="liczba_1_11"></td>
+			<td>...</td>
 		</tr>
 		<tr class="uwaga">
 			<td colspan="3"><b>Uwaga!</b> Suma liczb z pkt. 10 i 11 <b>musi</b> być równa liczbie z pkt. 9. Jeśli w pkt. 10 liczba jest większa niż 0, przyczynę należy opisać w pkt. 17.</td>
@@ -178,12 +149,12 @@
 		<tr>
 			<td class="lp">12.</td>
 			<td>Liczba głosów nieważnych <i>(z kart ważnych)</i></td>
-			<td><input type="text" id="liczba_1_12"></td>
+			<td>...</td>
 		</tr>
 		<tr>
 			<td class="lp">13.</td>
 			<td>Liczba głosów ważnych oddanych łącznie na wszystkich kandydatów <i>(z kart ważnych)</i></td>
-			<td><input type="text" id="liczba_1_13"></td>
+			<td>...</td>
 		</tr>
 		<tr class="uwaga">
 			<td colspan="3"><b>Uwaga!</b> Suma liczb z pkt. 12 i 13 <b>musi</b> być równa liczbie z pkt. 11.</td>
@@ -194,58 +165,58 @@
 	<table class="with_borders">
 		<tr>
 			<td class="lp">1.</td>
-			<td><input type="text" id="kandydat_1_imiona_i_nazwisko" style="width: 300px"></td>
-			<td><input type="text" id="kandydat_1_liczba_glosow_waznych"></td>
+			<td>...</td>
+			<td>...</td>
 		</tr>
 		<tr>
 			<td class="lp">2.</td>
-			<td><input type="text" id="kandydat_2_imiona_i_nazwisko" style="width: 300px"></td>
-			<td><input type="text" id="kandydat_2_liczba_glosow_waznych"></td>
+			<td>...</td>
+			<td>...</td>
 		</tr>
 		<tr>
 			<td class="lp">3.</td>
-			<td><input type="text" id="kandydat_3_imiona_i_nazwisko" style="width: 300px"></td>
-			<td><input type="text" id="kandydat_3_liczba_glosow_waznych"></td>
+			<td>...</td>
+			<td>...</td>
 		</tr>
 		<tr>
 			<td class="lp">4.</td>
-			<td><input type="text" id="kandydat_4_imiona_i_nazwisko" style="width: 300px"></td>
-			<td><input type="text" id="kandydat_4_liczba_glosow_waznych"></td>
+			<td>...</td>
+			<td>...</td>
 		</tr>
 		<tr>
 			<td class="lp">5.</td>
-			<td><input type="text" id="kandydat_5_imiona_i_nazwisko" style="width: 300px"></td>
-			<td><input type="text" id="kandydat_5_liczba_glosow_waznych"></td>
+			<td>...</td>
+			<td>...</td>
 		</tr>
 		<tr>
 			<td class="lp">6.</td>
-			<td><input type="text" id="kandydat_6_imiona_i_nazwisko" style="width: 300px"></td>
-			<td><input type="text" id="kandydat_6_liczba_glosow_waznych"></td>
+			<td>...</td>
+			<td>...</td>
 		</tr>
 		<tr>
 			<td class="lp">7.</td>
-			<td><input type="text" id="kandydat_7_imiona_i_nazwisko" style="width: 300px"></td>
-			<td><input type="text" id="kandydat_7_liczba_glosow_waznych"></td>
+			<td>...</td>
+			<td>...</td>
 		</tr>
 		<tr>
 			<td class="lp">8.</td>
-			<td><input type="text" id="kandydat_8_imiona_i_nazwisko" style="width: 300px"></td>
-			<td><input type="text" id="kandydat_8_liczba_glosow_waznych"></td>
+			<td>...</td>
+			<td>...</td>
 		</tr>
 		<tr>
 			<td class="lp">9.</td>
-			<td><input type="text" id="kandydat_9_imiona_i_nazwisko" style="width: 300px"></td>
-			<td><input type="text" id="kandydat_9_liczba_glosow_waznych"></td>
+			<td>...</td>
+			<td>...</td>
 		</tr>
 		<tr>
 			<td class="lp">10.</td>
-			<td><input type="text" id="kandydat_10_imiona_i_nazwisko" style="width: 300px"></td>
-			<td><input type="text" id="kandydat_10_liczba_glosow_waznych"></td>
+			<td>...></td>
+			<td>...</td>
 		</tr>
 		<tr>
 			<td>&nbsp;</td>
 			<td style="text-align: right"><b>Razem:</b></td>
-			<td><input type="text" id="suma_glosow_waznych"></td>
+			<td>...</td>
 		</tr>
 	</table>	
 
@@ -260,7 +231,7 @@
 		</tr>
 		<tr>
 			<td>&nbsp;</td>
-			<td><textarea id="uwagi_15" rows="5" cols="90"></textarea>
+			<td>...</td>
 		</tr>
 
 		<tr>
@@ -269,7 +240,7 @@
 		</tr>
 		<tr>
 			<td>&nbsp;</td>
-			<td><textarea id="uwagi_16" rows="5" cols="90"></textarea>
+			<td>...</td>
 		</tr>
 
 		<tr>
@@ -278,7 +249,7 @@
 		</tr>
 		<tr>
 			<td>&nbsp;</td>
-			<td><textarea id="uwagi_17" rows="5" cols="90"></textarea>
+			<td>...</td>
 		</tr>
 
 		<tr>
@@ -287,7 +258,7 @@
 		</tr>
 		<tr>
 			<td>&nbsp;</td>
-			<td><textarea id="uwagi_18" rows="5" cols="90"></textarea>
+			<td>...</td>
 		</tr>
 		<tr>
 			<td>19.</td>
@@ -295,7 +266,7 @@
 		</tr>
 		<tr>
 			<td>&nbsp;</td>
-			<td><textarea id="uwagi_19" rows="5" cols="90"></textarea>
+			<td>...</td>
 		</tr>
 		<tr>
 			<td>20.</td>
@@ -303,7 +274,7 @@
 		</tr>
 		<tr>
 			<td>&nbsp;</td>
-			<td><textarea id="uwagi_20" rows="5" cols="90"></textarea>
+			<td>...</td>
 		</tr>
 		<tr>
 			<td>21.</td>
@@ -311,7 +282,7 @@
 		</tr>
 		<tr>
 			<td>&nbsp;</td>
-			<td><textarea id="uwagi_21" rows="5" cols="90"></textarea>
+			<td>...</td>
 		</tr>
 	</table>
 
@@ -320,41 +291,42 @@
 	<table class="without_borders">
 		<tr>
 			<td class="lp">1.</td>
-			<td><input type="text" label="czlonek_01" style="width: 350px"></td>
+			<td>...</td>
 		</tr>
 		<tr>
 			<td class="lp">2.</td>
-			<td><input type="text" label="czlonek_02" style="width: 350px"></td>
+			<td>...</td>
 		</tr>
 		<tr>
 			<td class="lp">3.</td>
-			<td><input type="text" label="czlonek_03" style="width: 350px"></td>
+			<td>...</td>
 		</tr>
 		<tr>
 			<td class="lp">4.</td>
-			<td><input type="text" label="czlonek_04" style="width: 350px"></td>
+			<td>...</td>
 		</tr>
 		<tr>
 			<td class="lp">5.</td>
-			<td><input type="text" label="czlonek_05" style="width: 350px"></td>
+			<td>...</td>
 		</tr>
 		<tr>
 			<td class="lp">6.</td>
-			<td><input type="text" label="czlonek_06" style="width: 350px"></td>
+			<td>...</td>
 		</tr>
 		<tr>
 			<td class="lp">7.</td>
-			<td><input type="text" label="czlonek_07" style="width: 350px"></td>
+			<td>...</td>
 		</tr>
 		<tr>
 			<td class="lp">8.</td>
-			<td><input type="text" label="czlonek_08" style="width: 350px"></td>
+			<td>...</td>
 		</tr>
 		<tr>
 			<td class="lp">9.</td>
-			<td><input type="text" label="czlonek_09" style="width: 350px"></td>
+			<td>...</td>
 		</tr>
 	</table>
+	
 </form>
 
 </body>

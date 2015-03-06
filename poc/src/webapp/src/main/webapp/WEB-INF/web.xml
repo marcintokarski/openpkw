@@ -4,6 +4,16 @@
 
 <web-app>
 	<display-name>openpkw</display-name>
+	<servlet>
+		<servlet-name>PdfServlet</servlet-name>
+		<display-name>PdfServlet</display-name>
+		<description></description>
+		<servlet-class>pl.openpkw.poc.webapp.PdfServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>PdfServlet</servlet-name>
+		<url-pattern>/PdfServlet</url-pattern>
+	</servlet-mapping>
 
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>

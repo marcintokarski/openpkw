@@ -13,7 +13,7 @@ h1 {
 
 h2 {
 	text-align: center;	
-	font-size: 24px;
+	font-size: 16px;
 	text-transform: uppercase;
 }
 
@@ -27,19 +27,8 @@ h4 {
 	font-weight: bold;
 }
 
-fieldset {
-	margin-top: 20px;
-	border: 1px solid #c0c0c0;
-	background-color: #e0e0e0;
-}
-
-legend {
-	font-size: 14pt;
-	color: #404040;
-}
-
 body {
-	width: 800px;
+	width: 650px;
 }
 
 .uwaga {
@@ -66,7 +55,7 @@ table {
 }
 
 tr {
-	height: 55px;
+	height: 40px;
 }
 
 table.with_borders tr {
@@ -79,7 +68,7 @@ tr.uwaga {
 }
 
 td {
-	padding: 5px;
+	padding: 0px;
 }
 
 table.with_borders td {

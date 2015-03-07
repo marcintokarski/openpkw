@@ -17,7 +17,7 @@
 				<artifactId>jboss-as-maven-plugin</artifactId>
 				<version>7.3.Final</version>
 				<configuration>
-					<hostname>54.173.158.97</hostname>
+					<hostname>52.1.164.93</hostname>
 					<port>9999</port>
 					<username>go</username>
 					<password>ke734efjwEK</password>

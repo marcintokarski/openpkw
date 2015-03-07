@@ -2,6 +2,7 @@ package pl.openpkw.poc.webapp.pdf;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.util.Calendar;
 
 import org.junit.Test;
 
@@ -13,7 +14,7 @@ public class PDF_creation_test {
 	public void hopsa() throws Exception {
 		PdfGenerator generator = new PdfGenerator();
 		byte[] pdf = generator.generatePdf();
-		File output = new File("output.pdf");
+		File output = new File("output"+Calendar.getInstance().getTimeInMillis()+".pdf");
 		FileOutputStream out = new FileOutputStream(output);
 		out.write(pdf);
 		out.flush();
